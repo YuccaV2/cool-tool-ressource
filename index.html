@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>textmode.js + p5.js — palette par luminance</title>
+  <style>
+    html, body { margin: 0; padding: 0; background:#111; color:#eee; font-family: system-ui, sans-serif; }
+    #ui {
+      position: fixed; left: 12px; top: 12px; z-index: 10;
+      background: rgba(0,0,0,.6); border: 1px solid rgba(255,255,255,.15);
+      padding: 12px; border-radius: 10px; backdrop-filter: blur(6px);
+      width: 320px;
+    }
+    #ui h1 { font-size: 14px; margin: 0 0 10px 0; font-weight: 600; }
+    .row { display:flex; align-items:center; gap:10px; margin: 8px 0; }
+    .row label { font-size: 12px; opacity:.9; flex: 1; }
+    .row input[type="range"] { width: 160px; }
+    .swatches { display:grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 10px; }
+    .sw { display:flex; align-items:center; justify-content:space-between; gap:8px; font-size:12px; }
+    .sw code { opacity:.8; font-size: 11px; }
+    .hint { font-size: 11px; opacity:.7; margin-top: 10px; line-height: 1.35; }
+    canvas { display:block; }
+  </style>
+</head>
+<body>
+  <div id="ui">
+    <h1>Palette par luminance</h1>
+
+    <div class="row">
+      <label for="bins">Nombre de classes (bins)</label>
+      <input id="bins" type="range" min="2" max="8" step="1" value="6">
+      <span id="binsVal">6</span>
+    </div>
+
+   
+
+    <div id="swatches" class="swatches"></div>
+
+    <div class="hint">
+      • Place une image <code>assets/photo.jpg</code> (ou change le chemin dans <code>sketch.js</code>).<br>
+      • MAMP sert le .frag donc pas de souci CORS / file://.
+    </div>
+  </div>
+
+  <!-- p5 (pas obligatoire pour textmode.js, mais tu voulais p5 dans la page) -->
+  <script src="https://cdn.jsdelivr.net/npm/p5@1.9.4/lib/p5.min.js"></script>
+
+  <!-- textmode.js UMD -->
+  <script src="https://cdn.jsdelivr.net/npm/textmode.js@latest/dist/textmode.umd.js"></script>
+
+  <script src="./sketch.js"></script>
+</body>
+</html>
